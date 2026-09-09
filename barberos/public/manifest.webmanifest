@@ -1,0 +1,28 @@
+{
+  "name": "باربر OS — آرایشگاه مردانه",
+  "short_name": "باربر OS",
+  "description": "رزرو آنلاین نوبت و مدیریت هوشمند آرایشگاه مردانه",
+  "dir": "rtl",
+  "lang": "fa",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0e0e11",
+  "theme_color": "#0e0e11",
+  "categories": ["business", "lifestyle", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
