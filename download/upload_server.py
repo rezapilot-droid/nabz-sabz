@@ -28,10 +28,15 @@ button{width:100%;border:0;font-family:inherit;font-size:15px;font-weight:700;co
  background:linear-gradient(90deg,#ef6fae,#a86bd8);border-radius:99px;padding:12px;box-shadow:0 3px 0 #e8b7d6}
 .msg{margin-top:14px;font-size:12.5px;font-weight:700;color:#1f8a63;line-height:2}
 </style></head><body><div class="card">
-<h1>📤 آپلود فایل برای پروژهٔ کاربرگ</h1>
-<p>این صفحه برای رساندن فایل‌ها به سفارش‌دهندهٔ کاربرگ است:<br>
-📸 عکس دبیر آزمایشگاه &nbsp;|&nbsp; 📕 فایل PDF کتاب علوم هشتم<br>
-فایل به‌صورت خودکار در مخزن گیت‌هاب ذخیره می‌شود.</p>
+<h1>📤 ارسال فایل به سازندهٔ کاربرگ</h1>
+<p>دو فایل: 📸 عکس دبیر آزمایشگاه &nbsp;+&nbsp; 📕 فایل PDF کتاب علوم هشتم<br>
+هر فایل را جداگانه انتخاب و آپلود کنید؛ خودکار در گیت‌هاب ذخیره می‌شود.</p>
+<div style="text-align:right;font-size:12px;font-weight:700;color:#7c4a93;background:#f6ecfc;border:1.5px solid #e3c7f2;border-radius:12px;padding:10px 14px;margin-bottom:16px;line-height:2.2">
+۱. دکمهٔ «انتخاب فایل» را بزنید و فایل را انتخاب کنید<br>
+۲. دکمهٔ «آپلود کن» را بزنید و پیام سبزِ «دریافت شد» را ببینید<br>
+۳. فایل دوم را هم به همین ترتیب بفرستید<br>
+۴. در چت فقط بنویسید: <span style="color:#1f8a63">«گذاشتم»</span>
+</div>
 <form method="POST" action="/upload" enctype="multipart/form-data">
 <input type="file" name="file" accept="image/*" required>
 <button type="submit">آپلود کن 🌸</button>
