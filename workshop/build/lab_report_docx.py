@@ -127,10 +127,13 @@ def build_docx(data, mode, out_path):
         p = para(cell, True); set_rtl_para(p, WD_ALIGN_PARAGRAPH.CENTER)
         r = p.add_run(lab); style_run(r, 9, True, RGBColor(0x8A, 0x5A, 0x9E))
 
-    # ---- ۱. هدف
+    # ---- ۱. هدف (نسخهٔ دانش‌آموزی: خالی برای نوشتن)
     sec_title(doc, 1, "هدف آزمایش")
-    p = doc.add_paragraph(); set_rtl_para(p); p.paragraph_format.space_after = Pt(2)
-    r = p.add_run(data['objective']); style_run(r, 9.5, False, BODY)
+    if is_ans:
+        p = doc.add_paragraph(); set_rtl_para(p); p.paragraph_format.space_after = Pt(2)
+        r = p.add_run(data['objective']); style_run(r, 9.5, False, BODY)
+    else:
+        dotted_lines(doc, 2)
 
     # ---- ۲. فرضیه
     sec_title(doc, 2, "فرضیه")
@@ -151,20 +154,25 @@ def build_docx(data, mode, out_path):
     for i, m in enumerate(mats):
         cell = tbl.rows[i // 3].cells[i % 3]; shade_cell(cell, "FFF6FB")
         p = para(cell, True); set_rtl_para(p, WD_ALIGN_PARAGRAPH.CENTER)
-        p.add_run().add_picture(os.path.join(ROOT, "assets", "small", m["img"]), height=Mm(14))
+        img_path = (os.path.join(ROOT, "assets", m["img"]) if m["img"].startswith("icons/")
+                    else os.path.join(ROOT, "assets", "small", m["img"]))
+        p.add_run().add_picture(img_path, height=Mm(14))
         p = cell.add_paragraph(); set_rtl_para(p, WD_ALIGN_PARAGRAPH.CENTER)
         r = p.add_run(m['name']); style_run(r, 9.5, True, ROSE)
         p = cell.add_paragraph(); set_rtl_para(p, WD_ALIGN_PARAGRAPH.CENTER)
         r = p.add_run(m['amount']); style_run(r, 8.5, True, BLUE)
         p.paragraph_format.space_after = Pt(2)
 
-    # ---- ۴. روش کار
+    # ---- ۴. روش کار (نسخهٔ دانش‌آموزی: خالی برای نوشتن)
     sec_title(doc, 4, "روش کار")
-    for i, s in enumerate(data['procedure'], 1):
-        p = doc.add_paragraph(); set_rtl_para(p)
-        p.paragraph_format.space_after = Pt(1)
-        r = p.add_run(f"{fa(i)}. "); style_run(r, 10, True, PINK)
-        r = p.add_run(s); style_run(r, 9.5, False, BODY)
+    if is_ans:
+        for i, step in enumerate(data['procedure'], 1):
+            p = doc.add_paragraph(); set_rtl_para(p)
+            p.paragraph_format.space_after = Pt(1)
+            r = p.add_run(f"{fa(i)}. "); style_run(r, 10, True, PINK)
+            r = p.add_run(step); style_run(r, 9.5, False, BODY)
+    else:
+        dotted_lines(doc, 4)
 
     # ---- ۵. جدول ثبت مشاهدات
     sec_title(doc, 5, "جدول ثبت مشاهدات")

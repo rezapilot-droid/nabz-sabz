@@ -91,6 +91,15 @@ def build_page(data, mode):
             tbody += (f'<tr><td class="lbl">{r["label"]}</td>'
                       + '<td></td>' * (len(obs["columns"]) - 1) + '</tr>')
 
+    # --- هدف و روش کار: در نسخهٔ دانش‌آموزی خالی (برای نوشتن دانش‌آموز)
+    if is_ans:
+        obj_inner = f'<div class="inline-card"><div class="txt">🎯 {data["objective"]}</div></div>'
+        steps_inner = f'<ol class="steps">{steps}</ol>'
+    else:
+        obj_inner = '<div class="blank-big">' + dotted(2) + '</div>'
+        steps_inner = ('<div class="blank-grid">' + '<div class="dline"></div>' * 6 + '</div>'
+                       + '<div class="write-hint">✎ هدف آزمایش و مراحل کار را خودت بنویس…</div>')
+
     # --- فرضیه
     s2 = sec[2]
     if is_ans:
@@ -281,13 +290,13 @@ body {{
 table.obs {{ width:100%; border-collapse:separate; border-spacing:0; background:#fff;
   border-radius:4mm; overflow:hidden; border:0.55mm solid #c0e2f6; }}
 table.obs th {{
-  color:#fff; font-size:9.6pt; font-weight:800; padding:1.5mm 2mm;
+  color:#fff; font-size:9.6pt; font-weight:800; padding:1.2mm 2mm;
   background:linear-gradient(90deg,#5ab6e8,#3a99d6);
   border-left:0.4mm solid #ffffff55;
 }}
 table.obs td {{
-  border-top:0.45mm dotted #a9d6f0; padding:1.2mm 2.6mm; font-size:9.2pt; font-weight:600;
-  color:#54455c; height:5.2mm; vertical-align:middle;
+  border-top:0.45mm dotted #a9d6f0; padding:0.9mm 2.6mm; font-size:9.2pt; font-weight:600;
+  color:#54455c; height:4.5mm; vertical-align:middle;
 }}
 table.obs td.lbl {{ font-weight:800; color:#2377b3; background:#f2f9ff; width:34%; }}
 table.obs td.ans {{ color:#0f7a55; font-weight:700; }}
@@ -316,6 +325,15 @@ table.obs td.ans {{ color:#0f7a55; font-weight:700; }}
 .sheet.ans .tq {{ font-size:8.8pt; margin:0.2mm 9mm 0.2mm 0; }}
 .sheet.ans .concl-wrap .medal {{ width:11mm; height:11mm; }}
 
+/* ---------- کادرهای خالی دانش‌آموز ---------- */
+.blank-big .dline {{ height:5.5mm; }}
+.blank-grid {{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm 7mm; }}
+.blank-grid .dline {{ height:5mm; }}
+.write-hint {{ text-align:center; font-size:8pt; font-weight:700; color:#c99ab8; margin-top:0.8mm; }}
+.sheet.ans .blank-big, .sheet.ans .blank-grid, .sheet.ans .write-hint {{ display:none; }}
+.sheet:not(.ans) .sec {{ margin-top:1.35mm; }}
+.sheet:not(.ans) .card {{ padding:0.9mm 3.5mm 1.1mm; }}
+
 /* ---------- فوتر «با عشق» ---------- */
 .love {{
   position:absolute; bottom:3.2mm; right:0; left:0; margin:0 12mm;
@@ -335,7 +353,7 @@ table.obs td.ans {{ color:#0f7a55; font-weight:700; }}
 .sheet.ans .card {{ padding:1.1mm 3.5mm 1.3mm; }}
 .sheet.ans .fill.ans {{ line-height:1.5; font-size:9pt; }}
 .sheet.ans .ta.ans {{ line-height:1.42; font-size:8.6pt; }}
-.sheet.ans table.obs td {{ height:6.6mm; padding:0.5mm 2.6mm; }}
+.sheet.ans table.obs td {{ height:6.2mm; padding:0.4mm 2.6mm; }}
 .sheet.ans .think-box {{ padding:1.6mm 3mm 1.7mm; }}
 .sheet.ans .steps li {{ padding:0.05mm 0; }}
 .sheet.ans .idrow {{ margin-top:2mm; }}
@@ -378,7 +396,7 @@ table.obs td.ans {{ color:#0f7a55; font-weight:700; }}
 
   <div class="sec">
     {sec_head(sec[1])}
-    {sec_card(sec[1], f'<div class="inline-card"><div class="txt">🎯 {data["objective"]}</div></div>')}
+    {sec_card(sec[1], obj_inner)}
   </div>
 
   <div class="sec">
@@ -393,7 +411,7 @@ table.obs td.ans {{ color:#0f7a55; font-weight:700; }}
 
   <div class="sec">
     {sec_head(sec[4])}
-    {sec_card(sec[4], f'<ol class="steps">{steps}</ol>')}
+    {sec_card(sec[4], steps_inner)}
   </div>
 
   <div class="sec">

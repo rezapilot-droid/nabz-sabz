@@ -151,13 +151,13 @@ body {
 table.obs { width:100%; border-collapse:separate; border-spacing:0; background:#fff;
   border-radius:4mm; overflow:hidden; border:0.55mm solid #c0e2f6; }
 table.obs th {
-  color:#fff; font-size:9.6pt; font-weight:800; padding:1.5mm 2mm;
+  color:#fff; font-size:9.6pt; font-weight:800; padding:1.2mm 2mm;
   background:linear-gradient(90deg,#5ab6e8,#3a99d6);
   border-left:0.4mm solid #ffffff55;
 }
 table.obs td {
   border-top:0.45mm dotted #a9d6f0; padding:1.2mm 2.6mm; font-size:9.2pt; font-weight:600;
-  color:#54455c; height:5.2mm; vertical-align:middle;
+  color:#54455c; height:4.5mm; vertical-align:middle;
 }
 table.obs td.lbl { font-weight:800; color:#2377b3; background:#f2f9ff; width:34%; }
 table.obs td.ans { color:#0f7a55; font-weight:700; }
@@ -185,6 +185,15 @@ table.obs td.ans { color:#0f7a55; font-weight:700; }
 .sheet.ans .mat-card { padding:1.6mm 1mm 1.1mm; }
 .sheet.ans .tq { font-size:8.8pt; margin:0.2mm 9mm 0.2mm 0; }
 .sheet.ans .concl-wrap .medal { width:11mm; height:11mm; }
+
+/* ---------- کادرهای خالی دانش‌آموز ---------- */
+.blank-big .dline { height:5.5mm; }
+.blank-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm 7mm; }
+.blank-grid .dline { height:5mm; }
+.write-hint { text-align:center; font-size:8pt; font-weight:700; color:#c99ab8; margin-top:0.8mm; }
+.sheet.ans .blank-big, .sheet.ans .blank-grid, .sheet.ans .write-hint { display:none; }
+.sheet:not(.ans) .sec { margin-top:1.35mm; }
+.sheet:not(.ans) .card { padding:0.9mm 3.5mm 1.1mm; }
 
 /* ---------- فوتر «با عشق» ---------- */
 .love {
