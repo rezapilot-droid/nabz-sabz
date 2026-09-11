@@ -28,8 +28,10 @@ button{width:100%;border:0;font-family:inherit;font-size:15px;font-weight:700;co
  background:linear-gradient(90deg,#ef6fae,#a86bd8);border-radius:99px;padding:12px;box-shadow:0 3px 0 #e8b7d6}
 .msg{margin-top:14px;font-size:12.5px;font-weight:700;color:#1f8a63;line-height:2}
 </style></head><body><div class="card">
-<h1>📸 آپلود عکس آموزگار</h1>
-<p>عکس خانم قاسم‌تبار را انتخاب و دکمهٔ آپلود را بزنید.<br>فایل به‌صورت خودکار در مخزن گیت‌هاب ذخیره می‌شود.</p>
+<h1>📤 آپلود فایل برای پروژهٔ کاربرگ</h1>
+<p>این صفحه برای رساندن فایل‌ها به سفارش‌دهندهٔ کاربرگ است:<br>
+📸 عکس دبیر آزمایشگاه &nbsp;|&nbsp; 📕 فایل PDF کتاب علوم هشتم<br>
+فایل به‌صورت خودکار در مخزن گیت‌هاب ذخیره می‌شود.</p>
 <form method="POST" action="/upload" enctype="multipart/form-data">
 <input type="file" name="file" accept="image/*" required>
 <button type="submit">آپلود کن 🌸</button>
@@ -99,9 +101,14 @@ class Handler(SimpleHTTPRequestHandler):
                 raise ValueError("فایلی دریافت نشد")
             fname, data = files[0]
             ext = os.path.splitext(fname)[1].lower()
-            if ext not in (".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp", ".heic"):
-                ext = ".jpg"
-            safe = "teacher-photo" + ext
+            known = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp", ".heic", ".pdf")
+            if ext not in known:
+                ext = ext or ".jpg"
+            # حفظ نام اصلی فایل (پاک‌سازی شده) تا کتاب و عکس با هم تداخل نکنند
+            stem = re.sub(r'[^\w\.\-]', '-', os.path.splitext(fname)[0])[:40] or "file"
+            safe = stem + ext
+            if ext in (".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp", ".heic") and stem.startswith("test"):
+                safe = "test-" + stem + ext
             dest = os.path.join(RECEIVE_DIR, safe)
             with open(dest, "wb") as f:
                 f.write(data)
