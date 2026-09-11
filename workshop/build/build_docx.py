@@ -99,9 +99,16 @@ p = doc.add_paragraph(); set_rtl_para(p, WD_ALIGN_PARAGRAPH.CENTER)
 r = p.add_run("بسمه تعالی"); style_run(r, 12, True, PURPLE)
 p.paragraph_format.space_after = Pt(4)
 
-p = doc.add_paragraph(); set_rtl_para(p, WD_ALIGN_PARAGRAPH.LEFT)
-r = p.add_run("نام آموزگار: خانم قاسم‌تبار"); style_run(r, 11, True, PURPLE)
-p.paragraph_format.space_after = Pt(2)
+ttbl = doc.add_table(rows=1, cols=2); ttbl.alignment = WD_TABLE_ALIGNMENT.LEFT
+table_rtl(ttbl)
+cell_text = ttbl.rows[0].cells[0]; cell_img = ttbl.rows[0].cells[1]
+cell_text.width = Mm(45); cell_img.width = Mm(22)
+p = para(cell_text, True); set_rtl_para(p, WD_ALIGN_PARAGRAPH.RIGHT)
+r = p.add_run("نام آموزگار:"); style_run(r, 9.5, False, RGBColor(0xA0, 0x6A, 0xB8))
+p2 = cell_text.add_paragraph(); set_rtl_para(p2, WD_ALIGN_PARAGRAPH.RIGHT)
+r = p2.add_run("خانم قاسم‌تبار"); style_run(r, 12.5, True, RGBColor(0x7C, 0x3F, 0x96))
+pI = para(cell_img, True); set_rtl_para(pI, WD_ALIGN_PARAGRAPH.CENTER)
+pI.add_run().add_picture(os.path.join(ROOT, "assets", "small", "teacher-avatar.png"), width=Mm(14))
 
 p = doc.add_paragraph(); set_rtl_para(p, WD_ALIGN_PARAGRAPH.CENTER)
 r = p.add_run("فصل اول: مخلوط و جداسازی مواد"); style_run(r, 17, True, PURPLE, FA_TITLE_FONT)

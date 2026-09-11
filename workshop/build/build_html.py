@@ -136,7 +136,11 @@ body {{
 }}
 .hdr .side.teacher {{
   color:#7c4a93; background:linear-gradient(135deg,#fde7f3,#f3e8ff); border:0.5mm solid #f2c4dd;
+  display:flex; align-items:center; gap:2mm; text-align:right; padding:1mm 2mm;
 }}
+.hdr .side.teacher img {{ flex:0 0 auto; width:13mm; height:13mm; }}
+.hdr .side.teacher .t1 {{ font-size:8pt; font-weight:600; color:#a06ab8; line-height:1.5; }}
+.hdr .side.teacher .t2 {{ font-size:10pt; font-weight:800; color:#7c3f96; line-height:1.5; white-space:nowrap; }}
 .hdr .side.meta {{
   color:#6d5a86; background:#fdf4fa; border:0.5mm dashed #e9b9d6; font-weight:600; font-size:8.8pt;
 }}
@@ -242,7 +246,10 @@ body {{
       <div class="exp">{EXPERIMENT}</div>
       <div class="subtitle">{SUBTITLE}</div>
     </div>
-    <div class="side teacher">{TEACHER}</div>
+    <div class="side teacher">
+      <img src="{b64('assets/teacher-avatar.png')}" alt="">
+      <div><div class="t1">نام آموزگار:</div><div class="t2">خانم قاسم‌تبار</div></div>
+    </div>
   </div>
 
   <div class="sec-head"><span class="sec-title">{deco(FLOWER,'#ffffff','4.2mm',True)} لوازم و مواد لازم برای آزمایش</span><span class="line"></span></div>
