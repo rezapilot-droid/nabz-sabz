@@ -105,7 +105,7 @@ def build_page(data, mode):
     if is_ans:
         hyp = f'<div class="fill ans">💡 پاسخ پیشنهادی: {data["hypothesis"]["answer"]}</div>'
     else:
-        hyp = f'<div class="hint">💭 {data["hypothesis"]["hint"]}</div>' + dotted(2)
+        hyp = '<div class="blank-big">' + dotted(2) + '</div>'
 
     # --- نتیجه‌گیری
     s6 = sec[6]
@@ -384,7 +384,7 @@ table.obs td.ans {{ color:#0f7a55; font-weight:700; }}
   </div>
 
   <div class="subject">
-    <div class="s1">موضوع آزمایش: {data['subject']}</div>
+    <div class="s1">{data['subject_short']}</div>
     <div class="candyline"></div>
   </div>
 

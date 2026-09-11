@@ -115,7 +115,7 @@ def build_docx(data, mode, out_path):
 
     p = doc.add_paragraph(); set_rtl_para(p, WD_ALIGN_PARAGRAPH.CENTER)
     p.paragraph_format.space_before = Pt(3); p.paragraph_format.space_after = Pt(0)
-    r = p.add_run(f"موضوع آزمایش: {data['subject']}"); style_run(r, 13, True, PINK, FA_TITLE_FONT)
+    r = p.add_run(data['subject_short']); style_run(r, 13, True, PINK, FA_TITLE_FONT)
 
     # ---- مشخصات دانش‌آموز
     it = doc.add_table(rows=1, cols=3); table_rtl(it); set_borders(it, "E9B9D6", 6)
@@ -142,8 +142,6 @@ def build_docx(data, mode, out_path):
         r = p.add_run("پاسخ پیشنهادی: "); style_run(r, 9.5, True, GREEN)
         r = p.add_run(data['hypothesis']['answer']); style_run(r, 9.5, True, GREEN)
     else:
-        p = doc.add_paragraph(); set_rtl_para(p); p.paragraph_format.space_after = Pt(1)
-        r = p.add_run(data['hypothesis']['hint']); style_run(r, 8.5, False, HINTC)
         dotted_lines(doc, 2)
 
     # ---- ۳. مواد و وسایل

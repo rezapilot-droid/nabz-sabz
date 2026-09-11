@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>دانلود کاربرگ علوم هشتم — فصل ۱، آزمایش ۱</title>
+<title>دانلود کاربرگ‌های علوم هشتم — دبیرستان هوردخت</title>
 <style>
 @font-face{font-family:'Vazirmatn';src:url('/fonts/Vazirmatn-Regular.ttf') format('truetype');font-weight:400}
 @font-face{font-family:'Vazirmatn';src:url('/fonts/Vazirmatn-SemiBold.ttf') format('truetype');font-weight:600}
@@ -11,369 +11,248 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{min-height:100vh;font-family:'Vazirmatn',sans-serif;color:#5b4a5e;
   background:linear-gradient(160deg,#ffeef8 0%,#f3e8ff 55%,#e8f6fd 100%);
-  display:flex;align-items:center;justify-content:center;padding:24px}
-.card{width:100%;max-width:640px;background:#fffdfa;border:3px solid #f5b8d0;border-radius:24px;
-  padding:32px 28px;box-shadow:0 10px 40px rgba(216,132,181,.25)}
-.bism{width:150px;margin:0 auto 14px;text-align:center;font-size:14px;font-weight:700;color:#8a5a9e;
+  padding:28px 16px}
+.wrap{max-width:760px;margin:0 auto}
+.card{background:#fffdfa;border:3px solid #f5b8d0;border-radius:24px;
+  padding:26px 24px;box-shadow:0 10px 40px rgba(216,132,181,.25);margin-bottom:22px}
+.bism{width:150px;margin:0 auto 12px;text-align:center;font-size:14px;font-weight:700;color:#8a5a9e;
   background:#f6ecfc;border:1px solid #e3c7f2;border-radius:99px;padding:3px 0 5px}
-h1{font-size:21px;text-align:center;color:#c2447c;margin-bottom:4px}
-.sub{font-size:12.5px;text-align:center;color:#a98cb8;margin-bottom:22px}
-.item{display:flex;align-items:center;gap:14px;background:linear-gradient(180deg,#fff6fb,#fdeff7);
-  border:2px solid #f6c6dd;border-radius:16px;padding:14px 16px;margin-bottom:12px}
-.badge{flex:0 0 auto;font-size:11px;font-weight:700;color:#fff;background:linear-gradient(135deg,#f27bb2,#a86bd8);
-  border-radius:10px;padding:6px 10px;letter-spacing:.5px}
-.info{flex:1;min-width:0}
-.name{font-size:14.5px;font-weight:700;color:#b23e78}
-.desc{font-size:11.5px;font-weight:600;color:#8a7596;margin-top:2px}
-.size{font-size:10.5px;font-weight:600;color:#3d7fa8;margin-top:2px}
-a.btn{flex:0 0 auto;text-decoration:none;font-size:13px;font-weight:700;color:#fff;
-  background:linear-gradient(90deg,#ef6fae,#a86bd8);border-radius:99px;padding:9px 18px;
-  box-shadow:0 3px 0 #e8b7d6;transition:transform .1s}
-a.btn:active{transform:translateY(2px);box-shadow:none}
-.note{margin-top:16px;background:#fff8e8;border:2px solid #f5d98d;border-radius:99px;
-  padding:10px 16px;font-size:12px;font-weight:600;color:#9a6b12;line-height:1.8;text-align:center}
-.upload-cta{display:block;text-align:center;text-decoration:none;font-size:14px;font-weight:700;color:#fff;
-  background:linear-gradient(90deg,#ef6fae,#a86bd8);border-radius:99px;padding:12px;margin-bottom:18px;
+h1{font-size:20px;text-align:center;color:#c2447c;margin-bottom:4px}
+.sub{font-size:12.5px;text-align:center;color:#a98cb8;margin-bottom:6px}
+.love{text-align:center;font-size:12px;font-weight:700;color:#c2447c;background:#fff0f8;
+  border:1.5px dashed #f2bcd8;border-radius:99px;padding:6px;margin:12px 8px 0}
+.ch{border:2.5px solid #f6c6dd;border-radius:20px;padding:18px 18px 14px;margin-bottom:20px;
+  background:linear-gradient(180deg,#fffdfa,#fff7fb)}
+.ch-title{display:inline-block;font-size:15px;font-weight:800;color:#fff;
+  background:linear-gradient(90deg,#ef6fae,#a86bd8);border-radius:99px;padding:6px 18px;
+  margin-bottom:14px;box-shadow:0 3px 0 #e8b7d6}
+.exp{font-size:14px;font-weight:800;color:#b23e78;margin:12px 0 8px;
+  background:#fdf0f8;border-radius:10px;padding:8px 12px}
+.fmt{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid #f6c6dd;
+  border-radius:14px;padding:9px 12px;margin-bottom:8px}
+.fmt .ic{flex:0 0 44px;text-align:center;font-size:11px;font-weight:800;color:#fff;
+  border-radius:9px;padding:7px 0;letter-spacing:.5px}
+.fmt .ic.jpg{background:linear-gradient(135deg,#f27bb2,#e14e93)}
+.fmt .ic.docx{background:linear-gradient(135deg,#5ab6e8,#3a99d6)}
+.fmt .ic.pdf{background:linear-gradient(135deg,#fb8c69,#f76b3c)}
+.fmt .ic.zip{background:linear-gradient(135deg,#4fd0a0,#23a67e)}
+.fmt .info{flex:1;min-width:0}
+.fmt .name{font-size:13px;font-weight:700;color:#8a5a9e}
+.fmt .name .who{color:#0f7a55}
+a.btn{flex:0 0 auto;text-decoration:none;font-size:12.5px;font-weight:700;color:#fff;
+  background:linear-gradient(90deg,#ef6fae,#a86bd8);border-radius:99px;padding:8px 16px;
   box-shadow:0 3px 0 #e8b7d6}
-.foot{text-align:center;font-size:11px;font-weight:600;color:#b06aa0;margin-top:16px}
+a.btn:active{transform:translateY(2px);box-shadow:none}
+.fmt.ans{background:#f4fbf8;border-color:#bfe6d2}
+.fmt.ans a.btn{background:linear-gradient(90deg,#4fd0a0,#23a67e);box-shadow:0 3px 0 #bfe9d6}
+.note{margin-top:4px;background:#fff8e8;border:2px solid #f5d98d;border-radius:99px;
+  padding:9px 16px;font-size:11.5px;font-weight:600;color:#9a6b12;line-height:1.8;text-align:center}
+.foot{text-align:center;font-size:11px;font-weight:700;color:#b06aa0;margin-top:10px}
 </style>
 </head>
 <body>
+<div class="wrap">
 <div class="card">
   <div class="bism">بسمه تعالی</div>
-  <h1>🌸 کاربرگ علوم تجربی پایهٔ هشتم</h1>
-  <div class="sub">فصل اول: مخلوط و جداسازی مواد — آزمایش ۱: مخلوط‌های همگن و ناهمگن</div>
+  <h1>🌸 کاربرگ‌های علوم تجربی پایهٔ هشتم 🌸</h1>
+  <div class="sub">گزارش آزمایشگاه — دبیر آزمایشگاه: خانم قاسم‌تبار</div>
 
-  <a class="upload-cta" href="upload">📸 آپلود عکس آموزگار (خانم قاسم‌تبار)</a>
+  <div class="ch">
+    <div class="ch-title">📘 فصل اول: مخلوط و جداسازی مواد</div>
 
-    <div style="margin:18px 0 8px;text-align:center;font-size:14px;font-weight:800;color:#c2447c;
-    background:linear-gradient(90deg,#fff0f8,#f6edff);border:2px dashed #e9a9d6;border-radius:12px;padding:7px">🌸 فصل اول — آزمایش ۱: مخلوط‌های همگن و ناهمگن</div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">JPG</span>
-    <div class="info">
-      <div class="name">🌸 فصل اول — آزمایش ۱: مخلوط‌های همگن و ناهمگن — دانش‌آموزی JPG</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۱ مگابایت</div>
+    <div class="exp">آزمایش ۱ — مخلوط‌های همگن و ناهمگن</div>
+    <div class="fmt">
+      <span class="ic jpg">JPG</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — تصویر برای ارسال</div></div>
+      <a class="btn" href="lab-fasl1-azmayesh1-student.jpg" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-azmayesh1-student.jpg" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">WORD</span>
-    <div class="info">
-      <div class="name">🌸 فصل اول — آزمایش ۱: مخلوط‌های همگن و ناهمگن — دانش‌آموزی WORD</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۵ مگابایت</div>
+    <div class="fmt">
+      <span class="ic docx">WORD</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — قابل ویرایش</div></div>
+      <a class="btn" href="lab-fasl1-azmayesh1-student.docx" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-azmayesh1-student.docx" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">PDF</span>
-    <div class="info">
-      <div class="name">🌸 فصل اول — آزمایش ۱: مخلوط‌های همگن و ناهمگن — دانش‌آموزی PDF</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۲٫۶ مگابایت</div>
+    <div class="fmt">
+      <span class="ic pdf">PDF</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — چاپ دقیق</div></div>
+      <a class="btn" href="lab-fasl1-azmayesh1-student.pdf" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-azmayesh1-student.pdf" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">JPG</span>
-    <div class="info">
-      <div class="name">🌸 فصل اول — آزمایش ۱: مخلوط‌های همگن و ناهمگن — پاسخنامهٔ دبیر JPG</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۱ مگابایت</div>
+    <div class="fmt ans">
+      <span class="ic jpg">JPG</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — تصویر</div></div>
+      <a class="btn" href="lab-fasl1-azmayesh1-answer.jpg" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-azmayesh1-answer.jpg" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">WORD</span>
-    <div class="info">
-      <div class="name">🌸 فصل اول — آزمایش ۱: مخلوط‌های همگن و ناهمگن — پاسخنامهٔ دبیر WORD</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۵ مگابایت</div>
+    <div class="fmt ans">
+      <span class="ic docx">WORD</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — قابل ویرایش</div></div>
+      <a class="btn" href="lab-fasl1-azmayesh1-answer.docx" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-azmayesh1-answer.docx" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">PDF</span>
-    <div class="info">
-      <div class="name">🌸 فصل اول — آزمایش ۱: مخلوط‌های همگن و ناهمگن — پاسخنامهٔ دبیر PDF</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۲٫۶ مگابایت</div>
+    <div class="fmt ans">
+      <span class="ic pdf">PDF</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — چاپ دقیق</div></div>
+      <a class="btn" href="lab-fasl1-azmayesh1-answer.pdf" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-azmayesh1-answer.pdf" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">ZIP</span>
-    <div class="info">
-      <div class="name">🌸 فصل اول — آزمایش ۱: مخلوط‌های همگن و ناهمگن — بستهٔ کامل + فونت‌ها</div>
-      <div class="desc">هر ۶ فایل + فونت‌ها در پوشهٔ فصل</div>
-      <div class="size">۱۰ مگابایت</div>
+    <div class="fmt">
+      <span class="ic zip">ZIP</span>
+      <div class="info"><div class="name">بستهٔ کامل (هر ۶ فایل + فونت‌ها)</div></div>
+      <a class="btn" href="lab-fasl1-azmayesh1-complete.zip" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-azmayesh1-complete.zip" download>دانلود</a>
-  </div>
-  <div style="margin:18px 0 8px;text-align:center;font-size:14px;font-weight:800;color:#c2447c;
-    background:linear-gradient(90deg,#fff0f8,#f6edff);border:2px dashed #e9a9d6;border-radius:12px;padding:7px">🌡️ فصل اول — صفحهٔ ۱۱: تأثیر دما بر انحلال‌پذیری</div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">JPG</span>
-    <div class="info">
-      <div class="name">🌡️ فصل اول — صفحهٔ ۱۱: تأثیر دما بر انحلال‌پذیری — دانش‌آموزی JPG</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۱ مگابایت</div>
+
+    <div class="exp">صفحهٔ ۱۱ — آیا دما بر میزان حل شدن مواد تأثیر دارد؟</div>
+    <div class="fmt">
+      <span class="ic jpg">JPG</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — تصویر برای ارسال</div></div>
+      <a class="btn" href="lab-fasl1-p11-dama-student.jpg" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p11-dama-student.jpg" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">WORD</span>
-    <div class="info">
-      <div class="name">🌡️ فصل اول — صفحهٔ ۱۱: تأثیر دما بر انحلال‌پذیری — دانش‌آموزی WORD</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۵ مگابایت</div>
+    <div class="fmt">
+      <span class="ic docx">WORD</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — قابل ویرایش</div></div>
+      <a class="btn" href="lab-fasl1-p11-dama-student.docx" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p11-dama-student.docx" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">PDF</span>
-    <div class="info">
-      <div class="name">🌡️ فصل اول — صفحهٔ ۱۱: تأثیر دما بر انحلال‌پذیری — دانش‌آموزی PDF</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۲٫۶ مگابایت</div>
+    <div class="fmt">
+      <span class="ic pdf">PDF</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — چاپ دقیق</div></div>
+      <a class="btn" href="lab-fasl1-p11-dama-student.pdf" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p11-dama-student.pdf" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">JPG</span>
-    <div class="info">
-      <div class="name">🌡️ فصل اول — صفحهٔ ۱۱: تأثیر دما بر انحلال‌پذیری — پاسخنامهٔ دبیر JPG</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۱ مگابایت</div>
+    <div class="fmt ans">
+      <span class="ic jpg">JPG</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — تصویر</div></div>
+      <a class="btn" href="lab-fasl1-p11-dama-answer.jpg" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p11-dama-answer.jpg" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">WORD</span>
-    <div class="info">
-      <div class="name">🌡️ فصل اول — صفحهٔ ۱۱: تأثیر دما بر انحلال‌پذیری — پاسخنامهٔ دبیر WORD</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۵ مگابایت</div>
+    <div class="fmt ans">
+      <span class="ic docx">WORD</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — قابل ویرایش</div></div>
+      <a class="btn" href="lab-fasl1-p11-dama-answer.docx" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p11-dama-answer.docx" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">PDF</span>
-    <div class="info">
-      <div class="name">🌡️ فصل اول — صفحهٔ ۱۱: تأثیر دما بر انحلال‌پذیری — پاسخنامهٔ دبیر PDF</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۲٫۶ مگابایت</div>
+    <div class="fmt ans">
+      <span class="ic pdf">PDF</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — چاپ دقیق</div></div>
+      <a class="btn" href="lab-fasl1-p11-dama-answer.pdf" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p11-dama-answer.pdf" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">ZIP</span>
-    <div class="info">
-      <div class="name">🌡️ فصل اول — صفحهٔ ۱۱: تأثیر دما بر انحلال‌پذیری — بستهٔ کامل + فونت‌ها</div>
-      <div class="desc">هر ۶ فایل + فونت‌ها در پوشهٔ فصل</div>
-      <div class="size">۱۰ مگابایت</div>
+    <div class="fmt">
+      <span class="ic zip">ZIP</span>
+      <div class="info"><div class="name">بستهٔ کامل (هر ۶ فایل + فونت‌ها)</div></div>
+      <a class="btn" href="lab-fasl1-p11-dama-complete.zip" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p11-dama-complete.zip" download>دانلود</a>
-  </div>
-  <div style="margin:18px 0 8px;text-align:center;font-size:14px;font-weight:800;color:#c2447c;
-    background:linear-gradient(90deg,#fff0f8,#f6edff);border:2px dashed #e9a9d6;border-radius:12px;padding:7px">💧 فصل اول — صفحهٔ ۱۴: قیف جداکننده و کاغذ صافی</div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">JPG</span>
-    <div class="info">
-      <div class="name">💧 فصل اول — صفحهٔ ۱۴: قیف جداکننده و کاغذ صافی — دانش‌آموزی JPG</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۱ مگابایت</div>
+
+    <div class="exp">صفحهٔ ۱۴ — جداسازی با قیف جداکننده و کاغذ صافی</div>
+    <div class="fmt">
+      <span class="ic jpg">JPG</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — تصویر برای ارسال</div></div>
+      <a class="btn" href="lab-fasl1-p14-jiyof-student.jpg" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p14-jiyof-student.jpg" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">WORD</span>
-    <div class="info">
-      <div class="name">💧 فصل اول — صفحهٔ ۱۴: قیف جداکننده و کاغذ صافی — دانش‌آموزی WORD</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۵ مگابایت</div>
+    <div class="fmt">
+      <span class="ic docx">WORD</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — قابل ویرایش</div></div>
+      <a class="btn" href="lab-fasl1-p14-jiyof-student.docx" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p14-jiyof-student.docx" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">PDF</span>
-    <div class="info">
-      <div class="name">💧 فصل اول — صفحهٔ ۱۴: قیف جداکننده و کاغذ صافی — دانش‌آموزی PDF</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۲٫۶ مگابایت</div>
+    <div class="fmt">
+      <span class="ic pdf">PDF</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — چاپ دقیق</div></div>
+      <a class="btn" href="lab-fasl1-p14-jiyof-student.pdf" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p14-jiyof-student.pdf" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">JPG</span>
-    <div class="info">
-      <div class="name">💧 فصل اول — صفحهٔ ۱۴: قیف جداکننده و کاغذ صافی — پاسخنامهٔ دبیر JPG</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۱ مگابایت</div>
+    <div class="fmt ans">
+      <span class="ic jpg">JPG</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — تصویر</div></div>
+      <a class="btn" href="lab-fasl1-p14-jiyof-answer.jpg" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p14-jiyof-answer.jpg" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">WORD</span>
-    <div class="info">
-      <div class="name">💧 فصل اول — صفحهٔ ۱۴: قیف جداکننده و کاغذ صافی — پاسخنامهٔ دبیر WORD</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۵ مگابایت</div>
+    <div class="fmt ans">
+      <span class="ic docx">WORD</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — قابل ویرایش</div></div>
+      <a class="btn" href="lab-fasl1-p14-jiyof-answer.docx" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p14-jiyof-answer.docx" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">PDF</span>
-    <div class="info">
-      <div class="name">💧 فصل اول — صفحهٔ ۱۴: قیف جداکننده و کاغذ صافی — پاسخنامهٔ دبیر PDF</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۲٫۶ مگابایت</div>
+    <div class="fmt ans">
+      <span class="ic pdf">PDF</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — چاپ دقیق</div></div>
+      <a class="btn" href="lab-fasl1-p14-jiyof-answer.pdf" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p14-jiyof-answer.pdf" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">ZIP</span>
-    <div class="info">
-      <div class="name">💧 فصل اول — صفحهٔ ۱۴: قیف جداکننده و کاغذ صافی — بستهٔ کامل + فونت‌ها</div>
-      <div class="desc">هر ۶ فایل + فونت‌ها در پوشهٔ فصل</div>
-      <div class="size">۱۰ مگابایت</div>
+    <div class="fmt">
+      <span class="ic zip">ZIP</span>
+      <div class="info"><div class="name">بستهٔ کامل (هر ۶ فایل + فونت‌ها)</div></div>
+      <a class="btn" href="lab-fasl1-p14-jiyof-complete.zip" download>دانلود</a>
     </div>
-    <a class="btn" href="lab-fasl1-p14-jiyof-complete.zip" download>دانلود</a>
-  </div>
-  <div style="margin:18px 0 8px;text-align:center;font-size:14px;font-weight:800;color:#c2447c;
-    background:linear-gradient(90deg,#fff0f8,#f6edff);border:2px dashed #e9a9d6;border-radius:12px;padding:7px">💊 فصل دوم — صفحهٔ ۱۷: آزمایش قرص جوشان</div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">JPG</span>
-    <div class="info">
-      <div class="name">💊 فصل دوم — صفحهٔ ۱۷: آزمایش قرص جوشان — دانش‌آموزی JPG</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۱ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-jushan-student.jpg" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">WORD</span>
-    <div class="info">
-      <div class="name">💊 فصل دوم — صفحهٔ ۱۷: آزمایش قرص جوشان — دانش‌آموزی WORD</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۵ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-jushan-student.docx" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">PDF</span>
-    <div class="info">
-      <div class="name">💊 فصل دوم — صفحهٔ ۱۷: آزمایش قرص جوشان — دانش‌آموزی PDF</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۲٫۶ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-jushan-student.pdf" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">JPG</span>
-    <div class="info">
-      <div class="name">💊 فصل دوم — صفحهٔ ۱۷: آزمایش قرص جوشان — پاسخنامهٔ دبیر JPG</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۱ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-jushan-answer.jpg" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">WORD</span>
-    <div class="info">
-      <div class="name">💊 فصل دوم — صفحهٔ ۱۷: آزمایش قرص جوشان — پاسخنامهٔ دبیر WORD</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۵ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-jushan-answer.docx" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">PDF</span>
-    <div class="info">
-      <div class="name">💊 فصل دوم — صفحهٔ ۱۷: آزمایش قرص جوشان — پاسخنامهٔ دبیر PDF</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۲٫۶ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-jushan-answer.pdf" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">ZIP</span>
-    <div class="info">
-      <div class="name">💊 فصل دوم — صفحهٔ ۱۷: آزمایش قرص جوشان — بستهٔ کامل + فونت‌ها</div>
-      <div class="desc">هر ۶ فایل + فونت‌ها در پوشهٔ فصل</div>
-      <div class="size">۱۰ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-jushan-complete.zip" download>دانلود</a>
-  </div>
-  <div style="margin:18px 0 8px;text-align:center;font-size:14px;font-weight:800;color:#c2447c;
-    background:linear-gradient(90deg,#fff0f8,#f6edff);border:2px dashed #e9a9d6;border-radius:12px;padding:7px">🌋 فصل دوم — صفحهٔ ۱۷: فکر کنید (میخ و آتشفشان)</div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">JPG</span>
-    <div class="info">
-      <div class="name">🌋 فصل دوم — صفحهٔ ۱۷: فکر کنید (میخ و آتشفشان) — دانش‌آموزی JPG</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۱ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-fekr-student.jpg" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">WORD</span>
-    <div class="info">
-      <div class="name">🌋 فصل دوم — صفحهٔ ۱۷: فکر کنید (میخ و آتشفشان) — دانش‌آموزی WORD</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۵ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-fekr-student.docx" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(90deg,#ef6fae,#a86bd8)">PDF</span>
-    <div class="info">
-      <div class="name">🌋 فصل دوم — صفحهٔ ۱۷: فکر کنید (میخ و آتشفشان) — دانش‌آموزی PDF</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۲٫۶ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-fekr-student.pdf" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">JPG</span>
-    <div class="info">
-      <div class="name">🌋 فصل دوم — صفحهٔ ۱۷: فکر کنید (میخ و آتشفشان) — پاسخنامهٔ دبیر JPG</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۱ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-fekr-answer.jpg" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">WORD</span>
-    <div class="info">
-      <div class="name">🌋 فصل دوم — صفحهٔ ۱۷: فکر کنید (میخ و آتشفشان) — پاسخنامهٔ دبیر WORD</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۱٫۵ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-fekr-answer.docx" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">PDF</span>
-    <div class="info">
-      <div class="name">🌋 فصل دوم — صفحهٔ ۱۷: فکر کنید (میخ و آتشفشان) — پاسخنامهٔ دبیر PDF</div>
-      <div class="desc">تک‌صفحهٔ A4</div>
-      <div class="size">۲٫۶ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-fekr-answer.pdf" download>دانلود</a>
-  </div>
-  <div class="item">
-    <span class="badge" style="background:linear-gradient(135deg,#34b487,#1f8a63)">ZIP</span>
-    <div class="info">
-      <div class="name">🌋 فصل دوم — صفحهٔ ۱۷: فکر کنید (میخ و آتشفشان) — بستهٔ کامل + فونت‌ها</div>
-      <div class="desc">هر ۶ فایل + فونت‌ها در پوشهٔ فصل</div>
-      <div class="size">۱۰ مگابایت</div>
-    </div>
-    <a class="btn" href="lab-fasl2-p17-fekr-complete.zip" download>دانلود</a>
   </div>
 
-  <div class="note">⚠ برای اینکه فایل ورد دقیقاً مثل نمونه دیده شود، فونت‌های داخل بستهٔ ZIP را نصب کنید؛ بدون نصب هم متن‌ها سالم و قابل ویرایش می‌مانند.</div>
-  <div class="foot">کاربرگ علوم تجربی — پایهٔ هشتم | با آرزوی موفقیت برای دانش‌مندان کوچک 💜</div>
+  <div class="ch">
+    <div class="ch-title" style="background:linear-gradient(90deg,#5ab6e8,#a86bd8);box-shadow:0 3px 0 #c0e2f6">📗 فصل دوم: تغییرهای شیمیایی</div>
+
+    <div class="exp">صفحهٔ ۱۷ — آزمایش قرص جوشان (ویتامین C)</div>
+    <div class="fmt">
+      <span class="ic jpg">JPG</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — تصویر برای ارسال</div></div>
+      <a class="btn" href="lab-fasl2-p17-jushan-student.jpg" download>دانلود</a>
+    </div>
+    <div class="fmt">
+      <span class="ic docx">WORD</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — قابل ویرایش</div></div>
+      <a class="btn" href="lab-fasl2-p17-jushan-student.docx" download>دانلود</a>
+    </div>
+    <div class="fmt">
+      <span class="ic pdf">PDF</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — چاپ دقیق</div></div>
+      <a class="btn" href="lab-fasl2-p17-jushan-student.pdf" download>دانلود</a>
+    </div>
+    <div class="fmt ans">
+      <span class="ic jpg">JPG</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — تصویر</div></div>
+      <a class="btn" href="lab-fasl2-p17-jushan-answer.jpg" download>دانلود</a>
+    </div>
+    <div class="fmt ans">
+      <span class="ic docx">WORD</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — قابل ویرایش</div></div>
+      <a class="btn" href="lab-fasl2-p17-jushan-answer.docx" download>دانلود</a>
+    </div>
+    <div class="fmt ans">
+      <span class="ic pdf">PDF</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — چاپ دقیق</div></div>
+      <a class="btn" href="lab-fasl2-p17-jushan-answer.pdf" download>دانلود</a>
+    </div>
+    <div class="fmt">
+      <span class="ic zip">ZIP</span>
+      <div class="info"><div class="name">بستهٔ کامل (هر ۶ فایل + فونت‌ها)</div></div>
+      <a class="btn" href="lab-fasl2-p17-jushan-complete.zip" download>دانلود</a>
+    </div>
+
+    <div class="exp">صفحهٔ ۱۷ — فکر کنید: تغییر شیمیایی یا فیزیکی؟ (الف و ب)</div>
+    <div class="fmt">
+      <span class="ic jpg">JPG</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — تصویر برای ارسال</div></div>
+      <a class="btn" href="lab-fasl2-p17-fekr-student.jpg" download>دانلود</a>
+    </div>
+    <div class="fmt">
+      <span class="ic docx">WORD</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — قابل ویرایش</div></div>
+      <a class="btn" href="lab-fasl2-p17-fekr-student.docx" download>دانلود</a>
+    </div>
+    <div class="fmt">
+      <span class="ic pdf">PDF</span>
+      <div class="info"><div class="name">نسخهٔ دانش‌آموزی — چاپ دقیق</div></div>
+      <a class="btn" href="lab-fasl2-p17-fekr-student.pdf" download>دانلود</a>
+    </div>
+    <div class="fmt ans">
+      <span class="ic jpg">JPG</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — تصویر</div></div>
+      <a class="btn" href="lab-fasl2-p17-fekr-answer.jpg" download>دانلود</a>
+    </div>
+    <div class="fmt ans">
+      <span class="ic docx">WORD</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — قابل ویرایش</div></div>
+      <a class="btn" href="lab-fasl2-p17-fekr-answer.docx" download>دانلود</a>
+    </div>
+    <div class="fmt ans">
+      <span class="ic pdf">PDF</span>
+      <div class="info"><div class="name"><span class="who">پاسخنامهٔ دبیر</span> — چاپ دقیق</div></div>
+      <a class="btn" href="lab-fasl2-p17-fekr-answer.pdf" download>دانلود</a>
+    </div>
+    <div class="fmt">
+      <span class="ic zip">ZIP</span>
+      <div class="info"><div class="name">بستهٔ کامل (هر ۶ فایل + فونت‌ها)</div></div>
+      <a class="btn" href="lab-fasl2-p17-fekr-complete.zip" download>دانلود</a>
+    </div>
+  </div>
+
+  <div class="note">💡 برای نمایش دقیق فایل Word، فونت‌های داخل بستهٔ ZIP را نصب کنید؛ بدون نصب هم متن‌ها سالم و قابل ویرایش‌اند.</div>
+  <div class="love">طراحی شده با ❤ برای دانش‌آموزان دبیرستان هوردخت 🌸</div>
+</div>
 </div>
 </body>
 </html>
