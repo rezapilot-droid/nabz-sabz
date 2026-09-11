@@ -214,13 +214,6 @@ def build_docx(data, mode, out_path):
                 r = p.add_run("...............................................")
                 style_run(r, 8.5, False, DOT)
 
-    # ---- ایمنی
-    p = doc.add_paragraph(); set_rtl_para(p)
-    p.paragraph_format.space_before = Pt(5)
-    r = p.add_run("نکتهٔ ایمنی: "); style_run(r, 9, True, BROWN)
-    r = p.add_run(data['safety']); style_run(r, 8.8, False, BROWN)
-    shade_para(p, "FFF8E8")
-
     doc.save(out_path)
     print("DOCX saved:", out_path)
 

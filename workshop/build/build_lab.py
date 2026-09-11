@@ -48,14 +48,34 @@ def main(slug):
         lab_report_docx.build_docx(data, mode, docx)
 
         # ۵) خروجی‌های نهایی (فارسی) + نسخهٔ دانلود (لاتین)
+        mode_en = "student" if mode == "student" else "answer"
         for src, ext in ((jpg, "jpg"), (pdf, "pdf"), (docx, "docx")):
             dst = os.path.join(out_dir, f"{stem}-{fa_mode}.{ext}")
             shutil.copy(src, dst)
-            d2 = os.path.join(DL, f"lab-{slug}-{'student' if mode=='student' else 'answer'}.{ext}")
+            d2 = os.path.join(DL, f"lab-{slug}-{mode_en}.{ext}")
             shutil.copy(src, d2)
             print("  →", os.path.relpath(dst, REPO))
 
-    print(f"✅ کاربرگ «{data['subject']}» در ۶ فایل آماده شد.")
+    # ۶) ZIP بستهٔ کامل با ساختار پوشه‌بندی فصل/آزمایش
+    ztmp = os.path.join(BUILD, "zipsrc")
+    zdir = os.path.join(ztmp, dir_name)
+    if os.path.exists(ztmp):
+        shutil.rmtree(ztmp)
+    os.makedirs(zdir, exist_ok=True)
+    for mode_en in ("student", "answer"):
+        for ext in ("jpg", "pdf", "docx"):
+            shutil.copy(os.path.join(DL, f"lab-{slug}-{mode_en}.{ext}"), zdir)
+    fsrc = os.path.join(ROOT, "fonts")
+    if os.path.isdir(fsrc):
+        shutil.copytree(fsrc, os.path.join(zdir, "fonts"),
+                        ignore=shutil.ignore_patterns("*.zip"))
+    zpath = os.path.join(DL, f"lab-{slug}-complete.zip")
+    if os.path.exists(zpath):
+        os.remove(zpath)
+    subprocess.run(["zip", "-qr", zpath, dir_name], cwd=ztmp, check=True)
+    shutil.rmtree(ztmp)
+    print("  →", os.path.relpath(zpath, REPO))
+    print(f"✅ کاربرگ «{data['subject']}» در ۶ فایل + ZIP آماده شد.")
 
 if __name__ == "__main__":
     main(sys.argv[1] if len(sys.argv) > 1 else "fasl1-azmayesh1")
