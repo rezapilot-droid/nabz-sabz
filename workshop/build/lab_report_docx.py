@@ -116,9 +116,6 @@ def build_docx(data, mode, out_path):
     p = doc.add_paragraph(); set_rtl_para(p, WD_ALIGN_PARAGRAPH.CENTER)
     p.paragraph_format.space_before = Pt(3); p.paragraph_format.space_after = Pt(0)
     r = p.add_run(f"موضوع آزمایش: {data['subject']}"); style_run(r, 13, True, PINK, FA_TITLE_FONT)
-    p = doc.add_paragraph(); set_rtl_para(p, WD_ALIGN_PARAGRAPH.CENTER)
-    p.paragraph_format.space_after = Pt(3)
-    r = p.add_run(data['source']); style_run(r, 8, False, GRAY)
 
     # ---- مشخصات دانش‌آموز
     it = doc.add_table(rows=1, cols=3); table_rtl(it); set_borders(it, "E9B9D6", 6)
@@ -213,6 +210,13 @@ def build_docx(data, mode, out_path):
                 p = cell.add_paragraph(); set_rtl_para(p, WD_ALIGN_PARAGRAPH.CENTER)
                 r = p.add_run("...............................................")
                 style_run(r, 8.5, False, DOT)
+
+    # ---- فوتر «طراحی شده با عشق»
+    lp = doc.add_paragraph(); set_rtl_para(lp, WD_ALIGN_PARAGRAPH.CENTER)
+    lp.paragraph_format.space_before = Pt(8)
+    r = lp.add_run("🌸 طراحی شده با ❤ برای دانش‌آموزان دبیرستان هوردخت 🌸")
+    style_run(r, 10.5, True, RGBColor(0xC2, 0x44, 0x7C))
+    shade_para(lp, "FFEEF8")
 
     doc.save(out_path)
     print("DOCX saved:", out_path)

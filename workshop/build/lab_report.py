@@ -125,8 +125,7 @@ def build_page(data, mode):
                 </div>'''
             for t in data["think"])
 
-    badge = ('<div class="vbadge ans">پاسخنامه<br>دبیر 💚</div>' if is_ans
-             else '<div class="vbadge stu">برگهٔ<br>دانش‌آموز 💙</div>')
+    badge = ('<div class="vbadge ans">پاسخنامه<br>دبیر 💚</div>' if is_ans else '')
     sheet_cls = "sheet ans" if is_ans else "sheet"
 
     html = f"""<!doctype html>
@@ -160,7 +159,7 @@ body {{
   border:1.4mm solid #f3a7cf; border-radius:7mm;
   box-shadow:0 0 0 1mm #ffe4f1 inset;
   position:relative; overflow:hidden;
-  padding:5mm 5.5mm 6mm;
+  padding:5mm 5.5mm 12.5mm;
 }}
 /* واشی‌تِیپ گوشه‌ها */
 .tape {{
@@ -317,6 +316,20 @@ table.obs td.ans {{ color:#0f7a55; font-weight:700; }}
 .sheet.ans .tq {{ font-size:8.8pt; margin:0.2mm 9mm 0.2mm 0; }}
 .sheet.ans .concl-wrap .medal {{ width:11mm; height:11mm; }}
 
+/* ---------- فوتر «با عشق» ---------- */
+.love {{
+  position:absolute; bottom:3.2mm; right:0; left:0; margin:0 12mm;
+  display:flex; align-items:center; justify-content:center; gap:2mm;
+  background:linear-gradient(90deg,#ffeef8,#f6edff 55%,#eaf7ff);
+  border:0.55mm solid #f2bcd8; border-radius:99px;
+  box-shadow:0 0.6mm 0 #fbe0ef, 0 0 0 0.6mm #ffffff inset;
+  padding:1.4mm 6mm 1.7mm;
+}}
+.love .lv1, .love .lv2 {{ font-size:9.6pt; font-weight:800; color:#c2447c; white-space:nowrap; }}
+.love .lv2 {{ color:#8e44ad; }}
+.love .lvh {{ width:4.6mm; height:4.6mm; margin:0 0.4mm; }}
+.love .lv3 {{ font-size:9pt; margin-right:1mm; }}
+
 /* ---------- فشرده‌سازی حالت پاسخنامه ---------- */
 .sheet.ans .sec {{ margin-top:1.1mm; }}
 .sheet.ans .card {{ padding:1.1mm 3.5mm 1.3mm; }}
@@ -355,7 +368,6 @@ table.obs td.ans {{ color:#0f7a55; font-weight:700; }}
   <div class="subject">
     <div class="s1">موضوع آزمایش: {data['subject']}</div>
     <div class="candyline"></div>
-    <div class="s2">{data['source']}</div>
   </div>
 
   <div class="idrow">
@@ -397,6 +409,13 @@ table.obs td.ans {{ color:#0f7a55; font-weight:700; }}
   <div class="sec">
     {sec_head(sec[7])}
     <div class="think-grid">{think_boxes}</div>
+  </div>
+
+  <div class="love">
+    <span class="lv1">طراحی شده با</span>
+    <svg class="lvh" viewBox="0 0 24 24"><path fill="#ef5f9a" d="M12 21s-7.5-4.7-10-9C.4 8.6 2.2 4.5 6 4.5c2.2 0 3.6 1.2 4.4 2.5h1.2c.8-1.3 2.2-2.5 4.4-2.5 3.8 0 5.6 4.1 4 7.5-2.5 4.3-10 9-10 9z"/></svg>
+    <span class="lv2">عشق، برای دانش‌آموزان دبیرستان هوردخت</span>
+    <span class="lv3">🌸</span>
   </div>
 
 </div></div></body></html>"""
