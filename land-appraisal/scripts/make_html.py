@@ -1,10 +1,24 @@
 """Generate a self-contained RTL HTML report (inline SVG figures + tables)."""
-import json, math, os, csv
+import base64, json, math, os, csv
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.abspath(os.path.join(HERE, '..'))
 D = json.load(open(os.path.join(OUT, 'data', 'analysis.json')))
 lots, S, C = D['lots'], D['stats'], D['checks']
+_mass_path = os.path.join(OUT, 'model', 'massing.json')
+M = json.load(open(_mass_path)) if os.path.exists(_mass_path) else None
+
+
+def font_css():
+    base = '/home/user/tools/fonts/node_modules/vazirmatn/fonts/webfonts/'
+    out = []
+    for name, weight in (('Vazirmatn-Regular.woff2', 400), ('Vazirmatn-Bold.woff2', 700)):
+        p = os.path.join(base, name)
+        if os.path.exists(p):
+            b64 = base64.b64encode(open(p, 'rb').read()).decode()
+            out.append("@font-face{font-family:'Vazirmatn';font-weight:%d;font-display:swap;"
+                       "src:url(data:font/woff2;base64,%s) format('woff2')}" % (weight, b64))
+    return ''.join(out)
 
 def svg(name):
     s = open(os.path.join(OUT, 'figures', name)).read()
@@ -30,6 +44,10 @@ CTX = [('راه امامزاده شعیب (نزدیک‌ترین راه نام�
        ('شهر ری', 35.5964, 51.4266, 'شمال‌غرب', 'مرکز شهرستان'),
        ('تهران — میدان آزادی', 35.6997, 51.3561, 'شمال‌غرب', 'کریدور اصلی اشتغال و خدمات')]
 
+def fa_name(u):
+    return {'res': 'مسکونی', 'com': 'تجاری', 'off': 'اداری'}.get(u, u)
+
+
 def fmt(n, d=2):
     return ('{:,.%df}' % d).format(n).replace(',', '٬').replace('.', '٫')
 
@@ -41,6 +59,54 @@ rows = ''.join(
     f"<td class='num'>{fmt(l['ratio'])}</td><td class='num'>{fmt(l['perimeter'],1)}</td>"
     f"<td class='num'>{fmt(l['compaction'])}</td></tr>"
     for l in lots)
+
+
+if M:
+    by_block = {}
+    for b in M['buildings']:
+        by_block.setdefault(b['block'], []).append(b)
+    mass_rows = ''
+    for blk, items in sorted(by_block.items()):
+        n = len(items)
+        fl = max(len(i['floors']) for i in items)
+        hh = max(i['height'] for i in items)
+        fp = sum(i['footprint'] for i in items)
+        ga = sum(i['gfa'] for i in items)
+        mix = ' · '.join('%s %s' % (fa_name(f['use']), fmt(f['h'], 1))
+                         for f in items[0]['floors'])
+        mass_rows += (f"<tr><td class='id'>بلوک {blk}</td><td class='num'>{fmt(n,0)}</td>"
+                      f"<td class='num'>{fmt(fl,0)}</td><td class='num'>{fmt(hh,1)}</td>"
+                      f"<td class='num'>{fmt(fp,0)}</td><td class='num'>{fmt(ga,0)}</td><td>{mix}</td></tr>")
+    tot = M['summary']
+    mass_rows += (f"<tr><td class='id'>جمع</td><td class='num'>{fmt(tot['n'],0)}</td><td class='num'>—</td>"
+                  f"<td class='num'>—</td><td class='num'>{fmt(tot['footprint'],0)}</td>"
+                  f"<td class='num'>{fmt(tot['gfa'],0)}</td><td>—</td></tr>")
+    fA = sum(b['footprint'] for b in M['buildings'] if b['block'] == 'A')
+    fB = sum(b['footprint'] for b in M['buildings'] if b['block'] == 'B')
+    scen = [
+        ('S1 — محافظه‌کارانه', 'A: ۳ مسکونی · B: تجاری + ۲ مسکونی',
+         [('res',)] * 3, [('com',), ('res',), ('res',)]),
+        ('S2 — پیشنهادی', 'A: ۳ مسکونی · B: تجاری + اداری + ۲ مسکونی',
+         [('res',)] * 3, [('com',), ('off',), ('res',), ('res',)]),
+        ('S3 — حداکثری', 'A: ۴ مسکونی · B: ۵ طبقه (تجاری + ۲ اداری + ۲ مسکونی)',
+         [('res',)] * 4, [('com',), ('off',), ('off',), ('res',), ('res',)]),
+        ('S4 — کمترین', 'A: ۲ مسکونی · B: ۳ طبقه (تجاری + اداری + مسکونی)',
+         [('res',)] * 2, [('com',), ('off',), ('res',)]),
+    ]
+    scen_mass_rows = ''
+    for name, desc, a_, b_ in scen:
+        gfa = fA * len(a_) + fB * len(b_)
+        res = fA * sum(1 for u in a_ if u[0] == 'res') + fB * sum(1 for u in b_ if u[0] == 'res')
+        scen_mass_rows += (f"<tr><td class='id'>{name}</td><td>{desc}</td>"
+                           f"<td class='num'>{fmt(gfa,0)}</td><td class='num'>{fmt(gfa / 2695.68,2)}</td>"
+                           f"<td class='num'>{fmt(round(res / 90),0)}</td></tr>")
+    mix_rows = ''
+    for key, label, note in (('gfa_com', 'تجاری (همکف)', 'ویترین و خرده‌فروشی رو به معبر'),
+                             ('gfa_off', 'اداری', 'طبقه اول بلوک B — قابل اجاره'),
+                             ('gfa_res', 'مسکونی', 'بلوک A کامل + دو طبقه بلوک B')):
+        v = tot[key]
+        mix_rows += (f"<tr><td>{label}</td><td class='num'>{fmt(v,0)}</td>"
+                     f"<td class='num'>{fmt(v / tot['gfa'] * 100,1)}٪</td><td>{note}</td></tr>")
 
 ctx_rows = ''
 for name, la, lo, dirn, note in CTX:
@@ -109,6 +175,8 @@ checklist = [
 check_list_rows = ''.join(f"<tr><td class='num'>{a}</td><td class='id'>{b}</td><td>{c}</td></tr>"
                           for a, b, c in checklist)
 
+FONT_CSS = font_css()
+
 html = f"""<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
@@ -116,6 +184,7 @@ html = f"""<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>گزارش کارشناسی نقشه تفکیک — ۱۳ قطعه</title>
 <style>
+  {FONT_CSS}
   :root {{
     --ink:#1b1b1f; --mut:#6b7280; --acc:#0f4c5c; --acc2:#8c2b1f; --gold:#b8860b;
     --line:#d8dde4; --bg:#f6f7f9;
@@ -147,6 +216,9 @@ html = f"""<!doctype html>
   h2 {{ font-size:19px; margin:0 0 4px; color:var(--acc); display:flex; align-items:center; gap:9px; }}
   h2 .n {{ background:var(--acc); color:#fff; font-size:12.5px; border-radius:7px; padding:2px 9px; font-weight:700; }}
   .note {{ color:var(--mut); font-size:13.5px; margin:6px 0 16px; }}
+  .btn3d {{ display:inline-block; background:var(--acc); color:#fff; text-decoration:none; padding:10px 18px;
+    border-radius:10px; font-size:13.5px; font-weight:700; }}
+  .btn3d:hover {{ background:#155e70; }}
   table {{ width:100%; border-collapse:collapse; font-size:13.5px; margin-top:10px; }}
   th {{ background:#eef3f5; color:var(--acc); font-weight:700; padding:9px 8px; text-align:right; white-space:nowrap; font-size:12.8px; }}
   td {{ padding:8px; border-bottom:1px solid #eef1f4; }}
@@ -185,7 +257,7 @@ html = f"""<!doctype html>
       <span>سند مبنا: <b>1_29754637390.pdf</b></span>
       <span>خروجی AutoCAD Map 3D 2018</span>
       <span>مختصات: ۳۵٫۵۴۲۹۰۲ N — ۵۱٫۴۸۷۲۶۸ E</span>
-      <span>نسخه ۱٫۰</span>
+      <span>نسخه ۱٫۱ (افزودن حجم‌گذاری سه‌بعدی)</span>
     </div>
   </div>
 </header>
@@ -317,8 +389,51 @@ html = f"""<!doctype html>
     </div>
   </section>
 
+  <section id="sec3d">
+    <h2><span class="n">۸</span> طرح پیشنهادی و نمای سه‌بعدی (تجاری–اداری–مسکونی)</h2>
+    <div class="note">
+      حجم‌گذاری (massing) هر ۱۳ قطعه با رعایت عقب‌نشینی ۱٫۵ متر از مرز قطعه، بلوک A با سه طبقه مسکونی و بلوک B با
+      همکف تجاری و چهار طبقه (تجاری، اداری، مسکونی، مسکونی). همه اعداد از هندسهٔ خودِ نقشه استخراج شده‌اند.
+    </div>
+    <div class="kpis">
+      <div class="kpi"><b>{fmt(M['summary']['gfa'],0)} m²</b><span>سطح زیربنای کل</span></div>
+      <div class="kpi"><b>{fmt(M['summary']['far'],2)}</b><span>تراکم ساختمانی (FAR)</span></div>
+      <div class="kpi gold"><b>{fmt(M['summary']['coverage']*100,0)}٪</b><span>سطح اشغال کل</span></div>
+      <div class="kpi red"><b>≈ {fmt(M['summary']['units'],0)}</b><span>واحد مسکونی (۹۰ m²)</span></div>
+    </div>
+    <div class="note" style="margin-top:14px">نمای ایزومتریک — ۱۳ قطعه، بلوک A (۳ طبقه، ۹٫۲ متر) و بلوک B (۴ طبقه، ۱۴٫۱ متر):</div>
+    {svg('massing-iso.svg')}
+    <div class="grid2" style="margin-top:22px">
+      <div>{svg('massing-plan.svg')}</div>
+      <div>{svg('massing-street.svg')}</div>
+    </div>
+    <div class="note">راست: نقشه بام و سطح اشغال هر قطعه پس از عقب‌نشینی · چپ: نمای چشم‌سطح از معبر جنوبی (پرسپکتیو، چشم ۱٫۷ متر).</div>
+    <table>
+      <thead><tr><th>بلوک</th><th class="num">قطعات</th><th class="num">طبقات</th><th class="num">ارتفاع (m)</th>
+      <th class="num">سطح اشغال (m²)</th><th class="num">زیربنا (m²)</th><th>ترکیب کاربری</th></tr></thead>
+      <tbody>{mass_rows}</tbody>
+    </table>
+    <table style="margin-top:16px">
+      <thead><tr><th>کاربری</th><th class="num">سطح زیربنا (m²)</th><th class="num">سهم</th><th>توضیح</th></tr></thead>
+      <tbody>{mix_rows}</tbody>
+    </table>
+    <table style="margin-top:16px">
+      <thead><tr><th>سناریو</th><th>ترکیب</th><th class="num">زیربنا (m²)</th>
+      <th class="num">تراکم</th><th class="num">واحد مسکونی</th></tr></thead>
+      <tbody>{scen_mass_rows}</tbody>
+    </table>
+    <div class="note">سناریوها فقط ترکیب طبقات را تغییر می‌دهند؛ سطح اشغال و عقب‌نشینی ثابت است. S3 تنها در صورت اجازه ضوابط (تراکم مجاز بالای ۲٫۷۵) قابل اجراست.</div>
+    <div class="callout warn">
+      <b>مفروضات و محدودیت‌ها:</b> عقب‌نشینی ۱٫۵ متر فرض شده (حد واقعی تابع ضوابط طرح هادی/تفصیلی است)؛ ارتفاع طبقات
+      تجاری ۴٫۵، اداری ۳٫۶ و مسکونی ۳٫۰ متر؛ پارکینگ هر واحد یک جایگاه (≈{fmt(M['summary']['parking'],0)} جایگاه) در نظر گرفته شده
+      که با توجه به مساحت قطعات باید به‌صورت پارکینگ مشترک زیرزمینی یا پیلوت تأمین شود. این حجم‌گذاری «امکان‌سنجی» است و
+      جانمایی معماری، سازه و تأسیسات را شامل نمی‌شود.
+    </div>
+    <p style="margin-top:18px"><a class="btn3d" href="viewer.html">بازکردن نمای سه‌بعدی تعاملی (چرخش، بزرگ‌نمایی، کلیک روی هر بنا)</a></p>
+  </section>
+
   <section>
-    <h2><span class="n">۸</span> چک‌لیست اجرایی پیش از معامله</h2>
+    <h2><span class="n">۹</span> چک‌لیست اجرایی پیش از معامله</h2>
     <table>
       <thead><tr><th class="num">#</th><th>اقدام</th><th>هدف</th></tr></thead>
       <tbody>{check_list_rows}</tbody>
@@ -330,7 +445,7 @@ html = f"""<!doctype html>
   </section>
 
   <footer>
-    گزارش کارشناسی نقشه تفکیک — تولیدشده توسط nabz-sabz · نسخه ۱٫۰ · برای چاپ: Ctrl/Cmd + P
+    گزارش کارشناسی نقشه تفکیک — تولیدشده توسط nabz-sabz · نسخه ۱٫۱ · برای چاپ: Ctrl/Cmd + P
   </footer>
 </div>
 </body>
