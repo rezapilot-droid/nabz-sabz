@@ -1,0 +1,67 @@
+{
+ "A-11": {
+  "calc": 208.67,
+  "label": 173.92,
+  "dev": -16.65
+ },
+ "A-12": {
+  "calc": 177.45,
+  "label": 171.26,
+  "dev": -3.49
+ },
+ "A-13": {
+  "calc": 171.46,
+  "label": 166.16,
+  "dev": -3.09
+ },
+ "A-14": {
+  "calc": null,
+  "label": 178.45,
+  "dev": null
+ },
+ "A-21": {
+  "calc": null,
+  "label": 211.15,
+  "dev": null
+ },
+ "A-22": {
+  "calc": 165.0,
+  "label": 165.0,
+  "dev": 0.0
+ },
+ "A-23": {
+  "calc": 165.0,
+  "label": 165.0,
+  "dev": 0.0
+ },
+ "A-24": {
+  "calc": null,
+  "label": 193.04,
+  "dev": null
+ },
+ "B-11": {
+  "calc": null,
+  "label": 215.51,
+  "dev": null
+ },
+ "B-12": {
+  "calc": null,
+  "label": 188.42,
+  "dev": null
+ },
+ "B-13": {
+  "calc": null,
+  "label": 237.04,
+  "dev": null
+ },
+ "B-14": {
+  "calc": 296.2,
+  "label": 296.31,
+  "dev": 0.04
+ },
+ "B-15": {
+  "calc": null,
+  "label": 334.42,
+  "dev": null
+ }
+}
