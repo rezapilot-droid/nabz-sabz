@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دانلود گزارش عملکرد ـ استان مرکزی</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; padding: 40px 20px 64px;
+    font-family: "Vazirmatn", "B Nazanin", Tahoma, "Segoe UI", sans-serif;
+    background: radial-gradient(1200px 600px at 80% -10%, #e8eefc 0%, #f6f8fc 45%, #ffffff 100%);
+    color: #16233d; display: flex; flex-direction: column; align-items: center;
+  }
+  .head { text-align: center; max-width: 780px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #eaf0ff; color: #1f3864; border: 1px solid #cfdcff;
+    padding: 6px 14px; border-radius: 999px; font-size: 13px; margin-bottom: 18px;
+  }
+  h1 { font-size: clamp(21px, 3.4vw, 30px); line-height: 1.6; margin: 0 0 12px; font-weight: 700; }
+  .sub { font-size: 15px; line-height: 2; color: #55627c; margin: 0; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px; width: 100%; max-width: 880px; margin-top: 38px;
+  }
+  .card {
+    background: #fff; border: 1px solid #e2e8f4; border-radius: 18px; padding: 26px 24px;
+    box-shadow: 0 12px 30px rgba(22, 41, 82, .08); display: flex; flex-direction: column;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(22, 41, 82, .13); }
+  .tag {
+    align-self: flex-start; font-size: 12px; padding: 4px 11px; border-radius: 8px;
+    background: #f1f5ff; color: #3557a8; border: 1px solid #dbe5ff; margin-bottom: 14px;
+  }
+  .card.primary { border-color: #cbd9ff; background: linear-gradient(180deg, #fbfcff, #fff); }
+  .card.primary .tag { background: #1f3864; color: #fff; border-color: #1f3864; }
+  h2 { font-size: 18px; margin: 0 0 10px; line-height: 1.7; }
+  .desc { font-size: 14px; line-height: 1.95; color: #5b6884; margin: 0 0 20px; flex: 1; }
+  .meta { font-size: 12.5px; color: #8a94a8; margin-bottom: 18px; }
+  a.btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    text-decoration: none; font-size: 15px; font-weight: 700; padding: 13px 18px;
+    border-radius: 12px; background: #1f3864; color: #fff; border: 1px solid #1f3864;
+    transition: background .15s ease;
+  }
+  a.btn:hover { background: #16294a; }
+  a.btn.ghost { background: #fff; color: #1f3864; border: 1px solid #c9d5ee; }
+  a.btn.ghost:hover { background: #f2f6ff; }
+  .note {
+    max-width: 880px; margin-top: 30px; font-size: 13px; line-height: 2.1;
+    color: #6b7791; background: #fffdf3; border: 1px solid #f0e6c8;
+    border-radius: 14px; padding: 16px 20px;
+  }
+  .note b { color: #5a4a12; }
+</style>
+</head>
+<body>
+  <div class="head">
+    <span class="badge">✓ استخراج کامل متن PDF و تبدیل به Word</span>
+    <h1>گزارش عملکرد برنامه «به خانه برمی‌گردیم»<br>شبکه تهران سیما ـ استان مرکزی</h1>
+    <p class="sub">هر دو نسخه با فونت اصلی سند (B Nazanin)، چیدمان راست‌به‌چپ و کادر تزئینی صفحه آماده شده‌اند.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card primary">
+      <span class="tag">مطابق اصل PDF</span>
+      <h2>نسخه با ستاره‌ها</h2>
+      <p class="desc">دقیقاً مانند فایل اصلی؛ ستاره‌های ابتدا و انتهای تیترها، شماره‌ها و موضوع حفظ شده است.</p>
+      <div class="meta">Word (.docx) · A4 · راست‌به‌چپ · ۲ صفحه</div>
+      <a class="btn" href="report-faithful.docx" download="گزارش عملکرد برنامه به خانه برمی‌گردیم - استان مرکزی.docx">
+        ⬇ دانلود فایل Word
+      </a>
+    </div>
+
+    <div class="card">
+      <span class="tag">نسخهٔ ویرایشی</span>
+      <h2>نسخه بدون ستاره</h2>
+      <p class="desc">همان متن، بدون ستاره‌های اضافی؛ مناسب ارسال رسمی و ارائه به مدیر.</p>
+      <div class="meta">Word (.docx) · A4 · راست‌به‌چپ · ۲ صفحه</div>
+      <a class="btn ghost" href="report-clean.docx" download="گزارش عملکرد برنامه به خانه برمی‌گردیم - استان مرکزی (بدون ستاره).docx">
+        ⬇ دانلود فایل Word
+      </a>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>نکته:</b> فونت سند «B Nazanin» است. اگر این فونت روی سیستم شما نصب نباشد، Word به‌صورت خودکار فونت جانشین نمایش می‌دهد و متن سالم می‌ماند؛ برای نمایش عین اصل سند، فونت B Nazanin را نصب کنید.
+  </div>
+</body>
+</html>
